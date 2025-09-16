@@ -3,6 +3,7 @@ import tempfile
 from typing import List, Dict, Any
 
 import streamlit as st
+import google.generativeai as genai
 
 from vector_db import (
     get_or_create_collection,
@@ -24,9 +25,10 @@ SYSTEM_PROMPT = (
 @st.cache_resource(show_spinner=False)
 def _load_gemini_client():
     import google.generativeai as genai
-
-    api_key = "GEMINI_API_KEY"
+    api_key = st.secrets["GEMINI_API_KEY"]
+    
     if not api_key:
+        st.error("No API key found in Streamlit secrets.")
         return None
     genai.configure(api_key=api_key)
     return genai.GenerativeModel(model_name="gemini-2.0-flash")
@@ -153,4 +155,5 @@ with st.sidebar:
             f"<b>Final Response:</b> {st.session_state['chat_history'][-1]['content']}",
             unsafe_allow_html=True,
         )
+
 
