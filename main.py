@@ -24,7 +24,6 @@ SYSTEM_PROMPT = (
 
 @st.cache_resource(show_spinner=False)
 def _load_gemini_client():
-    import google.generativeai as genai
     api_key = st.secrets["GEMINI_API_KEY"]
     
     if not api_key:
@@ -155,5 +154,6 @@ with st.sidebar:
             f"<b>Final Response:</b> {st.session_state['chat_history'][-1]['content']}",
             unsafe_allow_html=True,
         )
+
 
 
