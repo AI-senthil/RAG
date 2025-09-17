@@ -1,3 +1,14 @@
+# Add this code to the beginning of your Streamlit app
+try:
+    __import__("pysqlite3")
+    import sys
+
+    sys.modules["sqlite3"] = sys.modules.pop("pysqlite3")
+    st.toast("✅ Using pysqlite3-binary")
+except ImportError:
+    st.toast("🚨 pysqlite3-binary not found, using default sqlite3")
+
+
 import os
 import tempfile
 from typing import List, Dict, Any
@@ -154,6 +165,5 @@ with st.sidebar:
             f"<b>Final Response:</b> {st.session_state['chat_history'][-1]['content']}",
             unsafe_allow_html=True,
         )
-
 
 
