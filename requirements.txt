@@ -3,3 +3,4 @@ google-generativeai
 huggingface_hub
 openai
 torch
+chromadb
