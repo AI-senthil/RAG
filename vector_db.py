@@ -96,7 +96,7 @@ def ingest_pdfs_to_chroma(
     collection_name: str = DEFAULT_COLLECTION_NAME,
     embedding_model_name: str = DEFAULT_EMBEDDING_MODEL,
     batch_size: int = 128,
-) -> Tuple[chromadb.ClientAPI, chromadb.api.models.Collection.Collection]:
+) -> Tuple[chromadb.Client, chromadb.Collection]:
     """Walk a folder for PDFs, chunk their text, and store in a persistent Chroma DB.
 
     - pdf_folder_path: Directory to recursively search for .pdf files
@@ -154,7 +154,7 @@ def ingest_pdfs_to_chroma(
 
 
 def query_collection(
-    collection: chromadb.api.models.Collection.Collection,
+    collection: chromadb.Collection,
     query_text: str,
     n_results: int = 5,
 ) -> Dict[str, Any]:
