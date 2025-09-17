@@ -3,7 +3,6 @@ google-generativeai
 huggingface_hub
 openai
 chromadb[server]
-pysqlite3-binary
 PyPDF2
 sentence-transformers
 
