@@ -2,8 +2,7 @@ streamlit
 google-generativeai
 huggingface_hub
 openai
-torch
-chromadb
+chromadb[server]
 pysqlite3-binary
 PyPDF2
 sentence-transformers
