@@ -5,3 +5,4 @@ openai
 torch
 chromadb
 pysqlite3-binary
+libsqlite3-dev
