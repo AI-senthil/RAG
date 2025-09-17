@@ -1,4 +1,10 @@
+try:
+    __import__("pysqlite3")
+    import sys
 
+    sys.modules["sqlite3"] = sys.modules.pop("pysqlite3")
+except ImportError:
+    pass
 import os
 import tempfile
 from typing import List, Dict, Any
@@ -155,6 +161,7 @@ with st.sidebar:
             f"<b>Final Response:</b> {st.session_state['chat_history'][-1]['content']}",
             unsafe_allow_html=True,
         )
+
 
 
 
